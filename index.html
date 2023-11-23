@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vue 3 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!--  CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Boolzap</title>
+</head>
+<body>
+    <div id="root">
+
+        <!-- LEFT SIDE -->
+        <div id="leftSide">
+
+            <!-- nav utente -->
+            <div class="userNav">
+                <div class="leftUserIcons">
+                    <img src="img/avatar_1.jpg" alt="Avatar Utente">
+                    <span class="userName">Riccardo</span>
+                </div>
+                <div class="rightUserIcons">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+          
+
+            <!-- notifiche -->
+            <div class="notifications">
+                <div class="bellBackground">
+                    <i class="fas fa-bell-slash"></i>
+                </div>
+                <div class="notificationsTexts">
+                    <div class="strong">Ricevi notifiche di nuovi messaggi</div>
+                    <a href="#">Attiva le notifiche desktop</a>
+                </div>           
+            </div>
+          
+
+            <!-- ricerca contatti -->
+            <div class="chatSearch">
+                <div class="searchIcon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keydown.enter="filteredContacts()">
+            </div>
+           
+
+            <!-- lista contatti -->
+            <div class="contactList">
+                <div v-for="(contact, index) in filteredContacts" class="contact" 
+                :class="(index == currentContact ? 'contactActive' : null)" 
+                @click="setIndexContact(index)">
+                    <div class="leftContact">
+                        <img :src="filteredContacts[index].avatar" alt="Avatar Contatto">
+                        <div class="info">
+                            <div class="contactName">{{contact.name}}</div>
+                            <div v-if="contact.messages.length > 0" class="lastMessage">{{contact.messages.slice(-1)[0].text}}</div>
+                        </div>
+                    </div>
+                    <div class="rightContact">
+                        <div v-if="contact.messages.length > 0" class="messageTime">{{contact.messages.slice(-1)[0].date}}</div>
+                    </div>
+                </div>
+            </div>
+           
+
+        </div>
+      
+
+        <!-- RIGHT SIDE -->
+        <div id="rightSide">
+
+            <!-- nav contatto -->
+            <div class="contactNav">
+                <div class="leftContactIcons">
+                    <img :src="filteredContacts[currentContact].avatar" alt="Avatar Utente">
+                    <div class="contactInfo">
+                        <div class="contactName">{{filteredContacts[currentContact].name}}</div>
+                        <div  v-if="filteredContacts[currentContact].messages.length > 0"  class="lastAccess">Ultimo accesso oggi alle ore {{filteredContacts[currentContact].messages.slice(-1)[0].date}}</div>
+                    </div>
+                </div>
+                <div class="rightContactIcons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+          
+
+            <!-- area messaggi -->
+            <div class="messageArea">
+                <div v-for="(message, index) in filteredContacts[currentContact].messages" class="message" :class="(filteredContacts[currentContact].messages[index].status == 'sent') ? 'messageSent' : 'messageReceived'" @mouseover="setIndexMessage(index)" @mouseleave="removeIndexMessage()">
+                    {{filteredContacts[currentContact].messages[index].message}}
+                    <span class="messageDate">{{filteredContacts[currentContact].messages[index].date}}</span>
+                    
+                </div>
+            </div>
+          
+
+            <!-- controlli nuovo messaggio -->
+            <div class="textControls">
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio" v-model="messageText" @keydown.enter="newMessage(currentContact)">
+                <i class="fas fa-microphone"></i>
+            </div>
+          
+
+        </div>
+      
+
+    </div>
+
+    <!-- My JS -->
+    <script src="script.js"></script>
+</body>
+</html>

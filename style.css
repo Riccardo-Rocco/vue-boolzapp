@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #019789 0%,#019789 15%, #d9dbd5 15%, #d9dbd5 100%);
+    background-repeat: no-repeat;
+}
+
+#root {
+    display: flex;
+    width: 85%;
+    height: 95%;
+}
+
+/* Left side */
+
+#leftSide {
+    width: 35%;
+    min-width: 450px;
+    height: 100%;
+}
+
+#leftSide .userNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    padding: 10px 20px 10px 10px;
+    background-color: #eaeaea;
+}
+
+#leftSide .userNav .leftUserIcons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#leftSide .userNav .leftUserIcons img {
+    height: 100%;
+    margin-right: 10px;
+}
+
+#leftSide .userNav .leftUserIcons .userName {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#leftSide .userNav .rightUserIcons  {
+    font-size: 20px;
+    color: #b1b1b1;
+}
+
+#leftSide .userNav .rightUserIcons i {
+    margin-left: 10px;
+}
+
+#leftSide .notifications {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+    padding: 15px;
+    background-color: #8EDAFC;
+}
+
+#leftSide .notifications .bellBackground {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 22px;
+    color: #8EDAFC;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#leftSide .notifications .notificationTexts .strong {
+    font-weight: 700;
+}
+
+#leftSide .notifications .notificationTexts > a {
+    color: grey;
+    font-size: 14px;
+}
+
+#leftSide .chatSearch {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+#leftSide .searchIcon {
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    border-right: 0;
+    background-color: #fff;
+    color: lightgrey;
+}
+
+#leftSide .chatSearch input {
+    width: calc(100% - 80px);
+    height: 35px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+}
+
+#leftSide .contactList {
+    width: 100%;
+    height: calc(100% - 215px);
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+#leftSide .contactList .contact {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    padding: 10px 10px 10px 20px;
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+}
+
+.contactActive {
+    background-color: #eaeaea;
+}
+
+#leftSide .contactList .contact .leftContact {
+    display: flex;
+    height: 100%;
+}
+
+#leftSide .contactList .contact .leftContact img {
+    height: 100%;
+    margin-right: 20px;
+}
+
+#leftSide .contactList .contact .leftContact .contactName {
+    font-weight: 700;
+}
+
+#leftSide .contactList .contact .leftContact .lastMessage {
+    width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    font-size: 14px;
+    color: grey;
+}
+
+#leftSide .contactList .contact .rightContact {
+    height: 100%;
+}
+
+#leftSide .contactList .contact .messageTime {
+    font-size: 12px;
+    color: grey;
+}
+
+/* Right side */
+
+#rightSide {
+    width: 65%;
+    min-width: 500px;
+    height: 100%;
+}
+
+#rightSide .contactNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    padding: 10px 20px 10px 10px;
+    background-color: #eaeaea;
+    border-left: 1px solid lightgrey;
+}
+
+#rightSide .leftContactIcons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#rightSide .leftContactIcons img {
+    height: 100%;
+    margin-right: 10px;
+}
+
+#rightSide .leftContactIcons .contactName {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#rightSide .leftContactIcons .lastAccess {
+    font-size: 14px;
+    color: grey;
+}
+
+#rightSide .rightContactIcons  {
+    font-size: 20px;
+    color: #b1b1b1;
+}
+
+#rightSide .rightContactIcons i {
+    margin-left: 10px;
+}
+
+#rightSide .messageArea {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 145px);
+    padding: 50px 70px;
+    background-image: url("img/mine.jpg");
+    background-position: center;
+    background-size: cover;
+    overflow-y: scroll;
+}
+
+#rightSide .messageArea .message {
+    position: relative;
+    width: 350px;
+    padding: 10px 30px 20px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+}
+
+#rightSide .messageArea .message .messageDate {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    font-size: 10px;
+    color: grey;
+}
+
+#rightSide .messageArea .dropdown {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 0;
+    transform: translateX(-50%);
+    color: red;
+    cursor: pointer;
+}
+
+#rightSide .messageArea .dropdownActive {
+    display: block;
+}
+
+.messageSent {
+    align-self: flex-end;
+    background-color: #D5F9BA;
+}
+
+.messageReceived {
+    background-color: #fff;
+}
+
+#rightSide .textControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    padding: 10px 30px;
+    background-color: #eaeaea;
+    border-left: 1px solid lightgrey;
+}
+
+#rightSide .textControls i {
+    font-size: 24px;
+    color: #6b7376;
+}
+
+#rightSide .textControls input {
+    width: 100%;
+    height: 100%;
+    margin: 0 40px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    background-color: #fff;
+}
